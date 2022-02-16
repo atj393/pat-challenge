@@ -1,0 +1,11 @@
+{
+    "/api/*": {
+        "target": "https://code-challenge.patronus-group.com",
+        "pathRewrite": {
+            "^/api": ""
+        },
+        "secure": false,
+        "logLevel": "debug",
+        "changeOrigin": true
+    }
+}

@@ -13,8 +13,7 @@ export class EmergenciesService {
 
   getEmergencyData(): Observable<EmergencyModel[]> {
 
-    const url = "https://code-challenge.patronus-group.com/getAllEmergencies";
-    return this.http.get<EmergencyModel[]>(url).pipe(
+    return this.http.get<EmergencyModel[]>('/api/getAllEmergencies').pipe(
       catchError(this.handleError));
 
   }
