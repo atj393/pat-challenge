@@ -1,20 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { EmergencyModel } from 'src/app/models/emergency-model';
 import { EmergenciesService } from '../../services/emergencies.service';
-
-export interface EmergencyModel {
-  emergency: {
-    emergencyId: String;
-    requestTime: String;
-  },
-  device: {
-    serialNumber: String;
-  },
-  holder: {
-    firstName: String;
-    lastName: String
-  }
-}
-
 @Component({
   selector: 'app-emergencies',
   templateUrl: './emergencies.component.html',
@@ -33,12 +19,9 @@ export class EmergenciesComponent implements OnInit {
 
   getEmergencyList() {
     this.emergenciesService.getEmergencyData().subscribe((response: any) => {
-      this.emergencyList = response.content;
-    },
-      err => {
-      },
-      () => {
-      });
+      if (response)
+        this.emergencyList = response.content;
+    });
   }
 
 }
