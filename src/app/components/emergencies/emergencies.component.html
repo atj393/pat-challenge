@@ -1,0 +1,20 @@
+<h1>Emergencies</h1>
+
+<p-table [value]="emergencyList">
+  <ng-template pTemplate="header">
+    <tr>
+      <th field="emergencyId">Emergency Id</th>
+      <th pSortableColumn="requestTime">Request Time <p-sortIcon field="name"></p-sortIcon></th>
+      <th field="serialNumber">Serial Number</th>
+      <th pSortableColumn=" serialNumber">Serial Number<p-sortIcon field="name"></p-sortIcon></th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-emergency>
+    <tr>
+      <td>{{emergency.emergency.emergencyId}}</td>
+      <td>{{emergency.emergency.requestTime | date}}</td>
+      <td>{{emergency.device.serialNumber}}</td>
+      <td>{{emergency.holder.firstName + ' ' + emergency.holder.lastName}}</td>
+    </tr>
+  </ng-template>
+</p-table>
