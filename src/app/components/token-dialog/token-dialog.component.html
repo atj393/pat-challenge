@@ -1,0 +1,11 @@
+<h1 mat-dialog-title>One Moment Please</h1>
+<div mat-dialog-content>
+  <p>Please paste the token here.</p>
+  <mat-form-field appearance="fill">
+    <mat-label>Token</mat-label>
+    <input matInput [(ngModel)]="tokenValue">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button [mat-dialog-close]="tokenValue" cdkFocusInitial>Save</button>
+</div>

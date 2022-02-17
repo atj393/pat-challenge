@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { TokenDialogComponent } from './components/token-dialog/token-dialog.component';
 import { Token } from './shared/token';
 
 @Component({
@@ -7,9 +9,23 @@ import { Token } from './shared/token';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'pat-challenge';
+  constructor(private token: Token,
+    public dialog: MatDialog) {
+    if (!this.token.getToken()) {
+      this.openDialog();
+    }
+  }
 
-  constructor(private token: Token) {
-    this.token.setToken("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IlBhdHJvbnVzIGNvZGUgY2hhbGxlbmdlIiwiaWF0IjoxNTE2MjM5MDIyfQ.ySwvtbpSzdTimko0acSe03Tp6VadH1wCDhYxoNfgH3k");
+  openDialog(): void {
+    const dialogRef = this.dialog.open(TokenDialogComponent, {
+      width: '250px',
+      hasBackdrop: true,
+      disableClose: true,
+    });
+    dialogRef.afterClosed().subscribe((value: string) => {
+      if (value) {
+        this.token.setToken(value);
+      }
+    });
   }
 }

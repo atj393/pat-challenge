@@ -9,17 +9,26 @@ import { EmergenciesComponent } from './components/emergencies/emergencies.compo
 
 import { TableModule } from 'primeng/table';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
-
+import { FormsModule } from '@angular/forms';
+import { TokenDialogComponent } from './components/token-dialog/token-dialog.component';
+import { MatDialogModule } from "@angular/material/dialog";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatInputModule } from '@angular/material/input';
 @NgModule({
   declarations: [
     AppComponent,
-    EmergenciesComponent
+    EmergenciesComponent,
+    TokenDialogComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     TableModule,
+    FormsModule,
+    MatDialogModule,
+    BrowserAnimationsModule,
+    MatInputModule
   ],
   providers: [
     {
