@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { TokenDialogComponent } from './components/token-dialog/token-dialog.component';
-import { Token } from './shared/token';
+import { Token } from './guard/token';
+import { TokenDialogComponent } from './shared/token-dialog/token-dialog.component';
 
 @Component({
   selector: 'app-root',

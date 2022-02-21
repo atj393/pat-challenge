@@ -9,5 +9,6 @@ export interface EmergencyModel {
     holder: {
         firstName: String;
         lastName: String
-    }
+        fullName: String;
+    },
 }

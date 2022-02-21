@@ -6,7 +6,7 @@ import {
   HttpInterceptor
 } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Token } from '../shared/token';
+import { Token } from '../guard/token';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {

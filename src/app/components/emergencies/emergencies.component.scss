@@ -1,0 +1,13 @@
+.emergencies {
+  margin: 0 2em;
+
+  ::ng-deep .p-datatable {
+
+    &-tbody {
+      tr:nth-child(even) {
+        background-color: #f8f9fa;
+      }
+    }
+
+  }
+}

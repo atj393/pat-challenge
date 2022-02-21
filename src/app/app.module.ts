@@ -10,15 +10,21 @@ import { EmergenciesComponent } from './components/emergencies/emergencies.compo
 import { TableModule } from 'primeng/table';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { FormsModule } from '@angular/forms';
-import { TokenDialogComponent } from './components/token-dialog/token-dialog.component';
 import { MatDialogModule } from "@angular/material/dialog";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatInputModule } from '@angular/material/input';
+import { CalendarModule } from 'primeng/calendar';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatButtonModule } from '@angular/material/button';
+import { TableViewComponent } from './shared/table-view/table-view.component';
+import { TokenDialogComponent } from './shared/token-dialog/token-dialog.component';
+
 @NgModule({
   declarations: [
     AppComponent,
     EmergenciesComponent,
-    TokenDialogComponent
+    TokenDialogComponent,
+    TableViewComponent
   ],
   imports: [
     BrowserModule,
@@ -28,7 +34,10 @@ import { MatInputModule } from '@angular/material/input';
     FormsModule,
     MatDialogModule,
     BrowserAnimationsModule,
-    MatInputModule
+    MatInputModule,
+    CalendarModule,
+    MatToolbarModule,
+    MatButtonModule
   ],
   providers: [
     {

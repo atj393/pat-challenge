@@ -1,0 +1,39 @@
+<p-table #dt [value]="dataList" [columns]="cols" dataKey="id" [styleClass]="'p-datatable-emergencies'" [rowHover]="true" [rows]="10" [showCurrentPageReport]="true" [rowsPerPageOptions]="pageOptions" [loading]="loading" [paginator]="paginator" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [paginatorPosition]="'bottom'" [filterDelay]="0">
+
+  <ng-template pTemplate="header" let-columns>
+    <tr>
+      <th *ngFor="let col of columns" [pSortableColumn]="col.field" [pSortableColumnDisabled]="!col.sort">
+        {{col.header}}
+        <p-sortIcon [field]="col.field" *ngIf="col.sort"></p-sortIcon>
+      </th>
+    </tr>
+    <tr>
+      <th *ngFor="let col of columns">
+        <ng-container [ngSwitch]="col.type">
+          <ng-container *ngSwitchCase="'text'">
+            <input pInputText type="text" (input)="dt.filter(inputSearch.value, col.field, col.searchType)" placeholder="Search by Country" class="p-column-filter p-inputtext p-component" #inputSearch>
+          </ng-container>
+          <ng-container *ngSwitchCase="'date'">
+            <p-calendar (onSelect)="onDateSelect($event)" (onClearClick)="dt.filter('', col.field, col.searchType)" [showButtonBar]="true" styleClass="p-column-filter" placeholder="Registration Date" [readonlyInput]="true" dateFormat="yy-mm-dd"></p-calendar>
+          </ng-container>
+          <ng-container *ngSwitchDefault>output2</ng-container>
+        </ng-container>
+      </th>
+    </tr>
+  </ng-template>
+
+  <ng-template pTemplate="body" let-emergency>
+    <tr>
+      <td *ngFor="let col of cols">
+        {{col.type=='date'? (processTableData(emergency,col.field) |  date:'MM.dd.yyyy H:mm:SS'):processTableData(emergency,col.field) }}
+      </td>
+    </tr>
+  </ng-template>
+
+  <ng-template pTemplate="emptymessage">
+    <tr>
+      <td colspan="8">No records found.</td>
+    </tr>
+  </ng-template>
+
+</p-table>
